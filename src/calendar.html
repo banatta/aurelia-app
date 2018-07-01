@@ -16,23 +16,26 @@
         <tr>
           <td repeat.for="i of [1,2,3,4,5,6,7]">
             ${i}
-            <button class="eventbtn" repeat.for="event of eventsOnDate(i)">${event.title}</button>
+            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
           </td>
         </tr>
         <tr>
           <td repeat.for="i of [8,9,10,11,12,13,14]">
             ${i}
-            <button class="eventbtn" repeat.for="event of eventsOnDate(i)">${event.title}</button></td>
+            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+          </td>
         </tr>
         <tr>
           <td repeat.for="i of [15,16,17,18,19,20,21]">
             ${i}
-            <button class="eventbtn" repeat.for="event of eventsOnDate(i)">${event.title}</button></td>
+            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+          </td>
         </tr>
         <tr>
-          <td repeat.for="i of [22,23,24,25,26,27,28]">
+          <td repeat.for="i of [22,23,24,25,26,27,28]">    
             ${i}
-            <button class="eventbtn" repeat.for="event of eventsOnDate(i)">${event.title}</button></td>
+            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+          </td>
         </tr>
       </tbody>
     </table>

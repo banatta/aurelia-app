@@ -54,13 +54,4 @@ export class Calendar {
     document.getElementById('eventModal').style.display='none';
   }
 
-  eventsOnDate(date){
-    let events_on_date = [];
-    this.events.forEach(function(event) {
-      if (event.date == date)
-        events_on_date.push(event);
-    });
-    return events_on_date;
-  }
-
 }
