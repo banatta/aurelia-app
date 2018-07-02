@@ -1,9 +1,23 @@
 section{
-    td, th{border:1px solid;padding:10px;text-align: center}
-    .addEvent{
-
+    h2{
+        font-weight: bold;
+        padding: 10px;
+        color: #333333;
+    }
+    th{
+        border:1px solid;
+        padding:10px;
+        text-align: center;
+    }
+    td {
+        border: 1px solid;
+        vertical-align: top;
+        padding: 5px;
+        text-align: right;
+        min-width: 200px;
     }
 }
+
 
 /* Full-width input fields */
 input[type=text]{
@@ -13,20 +27,6 @@ input[type=text]{
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
-
-/* Button Styling */
-button {
-    background-color: green;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.8;
 }
 
 /* Modal */
@@ -47,12 +47,33 @@ button:hover {
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto;
+    margin: 10% auto 15% auto;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
 }
 
+.container {
+    margin-top: 10px;
+}
 
+select {
+    
+}
+
+/* Buttons */
+
+button {
+    background-color: green;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
 .savebtn {
     float: right;
 }
@@ -62,4 +83,16 @@ button:hover {
 }
 .deletebtn {
     background-color: red;
+}
+
+.eventbtn {
+    background-color: #4286f4;
+    color: #222222;
+    border-style: 1px solid;
+    border-color: #79abfc;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    margin: 2px;
 }
