@@ -1,7 +1,7 @@
 <template>
   <section class="au-animate">
     <h2>${heading}</h2>
-    <button click.delegate="openModal()"">Add Event</button>
+    <button click.delegate="openAddEventModal()"">Add Event</button>
     <table>
       <thead>
         <th>Sunday</th>
@@ -16,35 +16,34 @@
         <tr>
           <td repeat.for="i of [1,2,3,4,5,6,7]">
             ${i}
-            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+            <button class="eventbtn" click.delegate="openEditEventModal($event)" repeat.for="event of events" if.bind="event.date == i" value=${event.id}>${event.title}</button>
           </td>
         </tr>
         <tr>
           <td repeat.for="i of [8,9,10,11,12,13,14]">
             ${i}
-            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+            <button class="eventbtn" click.delegate="openEditEventModal($event)" repeat.for="event of events" if.bind="event.date == i" value=${event.id}>${event.title}</button>
           </td>
         </tr>
         <tr>
-          <td repeat.for="i of [15,16,17,18,19,20,21]">
+          <td repeat.for="i of [15,16,17,18,19,20,21]" value=${event.id}>
             ${i}
-            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+            <button class="eventbtn" click.delegate="openEditEventModal($event)" repeat.for="event of events" if.bind="event.date == i" value=${event.id}>${event.title}</button>
           </td>
         </tr>
         <tr>
-          <td repeat.for="i of [22,23,24,25,26,27,28]">    
+          <td repeat.for="i of [22,23,24,25,26,27,28]" value=${event.id}>    
             ${i}
-            <button class="eventbtn" click.delegate="editEvent(i)" repeat.for="event of events" if.bind="event.date == i">${event.title}</button>
+            <button class="eventbtn" click.delegate="openEditEventModal($event)" repeat.for="event of events" if.bind="event.date == i" value=${event.id}>${event.title}</button>
           </td>
         </tr>
       </tbody>
     </table>
   </section>
 
-
-  <div id="eventModal" ref="eventModal" class="modal">
+  <div id="addEventModal" class="modal">
   
-    <form class="modal-content animate">
+    <form class="modal-content">
 
       <div class="container">
         <label for="title"><b>Event Title</b></label>
@@ -53,15 +52,38 @@
 
       <div class="container">
         <label for="number"><b>Event Date</b></label>
-        <select value.bind="bound_event_date">
-          <option repeat.for="i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]" value=${i}>${i}</option>
+        <select value.two-way="bound_event_date">
+          <option repeat.for="i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]" model.bind="i" value=${i}>${i}</option>
         </select>
       </div>
 
+      <div class="container" style="background-color:#dddddd">
+        <button type="button" click.delegate="closeAddEventModal()" class="cancelbtn">Cancel</button>
+        <button type="button" click.delegate="addEvent()" class="savebtn">Save Event</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="editEventModal" class="modal">
+  
+    <form class="modal-content">
+
+      <div class="container">
+        <label for="title"><b>Event Title</b></label>
+        <input type="text" placeholder="Title" name="title" value.two-way="bound_event_title" required>
+      </div>
+
+      <div class="container">
+        <label for="number"><b>Event Date</b></label>
+        <select value.two-way="bound_event_date">
+          <option repeat.for="i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]" model.bind="i" value=${i}>${i}</option>
+        </select>
+      </div>
 
       <div class="container" style="background-color:#dddddd">
-        <button type="button" click.delegate="closeModal()" class="cancelbtn">Cancel</button>
-        <button type="button" click.delegate="addEvent()" class="savebtn">Save Event</button>
+        <button type="button" click.delegate="closeEditEventModal()" class="cancelbtn">Cancel</button>
+        <button type="button" click.delegate="deleteEvent()" class="deletebtn">Delete Event</button>
+        <button type="button" click.delegate="editEvent()" class="savebtn">Save Edit</button>
       </div>
     </form>
   </div>
